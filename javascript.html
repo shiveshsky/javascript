@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style type="text/css">
+            .circle{
+                height: 100px;
+                width: 100px;
+                border-radius: 50%;
+                position: relative;
+            }    
+              .square{
+                height: 100px;
+                width: 100px;
+                  position: relative;
+                
+            }    
+        </style>
+    <title>Reflex Game</title>
+    </head>
+    <body>
+        <p><h1>Click on the shape to check your reflexes<h1></p>
+        <p>Click on the shape as fast as you can</p>
+        <p id="time"></p>
+        <div id="shape" ></div>
+        
+        <script type="text/javascript">
+        function getColor()
+            {
+                var color=["red","green","blue","purple","black","yellow"];
+                return (color[Math.floor(Math.random()*7)]);
+            }
+            function getShape(){
+                var cls=["circle","square"]
+                return (cls[Math.floor(Math.random()*2)]);
+            }
+            document.getElementById("shape").className=getShape();
+            document.getElementById("shape").style.backgroundColor=getColor();
+       
+            
+             var start= new Date().getTime();
+            function starttimer(){
+                start= new Date().getTime();
+                 document.getElementById("shape").style.display="block";
+            }
+            
+            document.getElementById("shape").onclick=function(){
+                var end = new Date().getTime();
+                var time = end - start;
+                document.getElementById("time").innerHTML="you took "+(time/1000)+ "secs!!";
+                document.getElementById("shape").style.display="none";
+                window.setTimeout(starttimer(),2000);
+                 document.getElementById("shape").className=getShape();
+                document.getElementById("shape").style.backgroundColor=getColor();
+                     document.getElementById("shape").style.top=""+Math.random()*100;
+            document.getElementById("shape").style.left=""+Math.random()*100;
+                
+            }
+        </script>
+    </body>
+    
+</html>
